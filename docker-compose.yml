@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./gal.xslt:/etc/nginx/gal.xslt:ro
+      #- ./.htpasswd:/etc/.htpasswd:ro
+      - ./cache:/var/cache/nginx
+      - /media:/var/www:ro  # change it
+    privileged: true
+
